@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,5 +15,6 @@ namespace DataAccessLayer.Abstract
         int Delete(T p);
 
         T GetById(int id);
+        T Find(Expression<Func<T, bool>> where);
     }
 }

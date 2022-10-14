@@ -1,0 +1,19 @@
+﻿@model EntityLayer.Concrete.Teacher
+@{
+    ViewBag.Title = "AddNewTeacher";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container-fluid col-10 mt-3">
+    <h1 class="lead font-weight-normal">Öğrenci Ekle</h1>
+    <br />
+    <form method="post" class="form-group ">
+        @Html.Label("Öğretmen Adı")
+        @Html.TextBoxFor(x => x.TeacherName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Öğretmen Soyadı")
+        @Html.TextBoxFor(x => x.TeacherSurname, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+    </form>
+</div>

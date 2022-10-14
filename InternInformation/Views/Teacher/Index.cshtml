@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Teacher>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container-fluid col-12 mt-3">
+    <div>
+        <h2>
+            Öğretmen Tablosu
+        </h2>
+        <table class="table table-hover table-striped table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Öğretmen ID</th>
+                    <th scope="col">Öğretmen İsmi</th>
+                    <th scope="col">Öğretmen Soyisim</th>
+                    <th scope="col">Komisyon mu ?</th>
+                    <th scope="col">Öğretmen Durumu</th>
+                    <th scope="col" class="text-center" style="min-width: 300px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.TeacherID
+                        </td>
+                        <td>
+                            @item.TeacherName
+                        </td>
+                        <td>
+                            @item.TeacherSurname
+                        </td>
+                        <td>
+                            @item.Commission
+                        </td>
+                        <td>
+                            @item.TeacherStatus
+                        </td>
+                        <td class="project-actions text-center">
+                            <a class="btn btn-warning btn-sm" href="/Teacher/TeacherUpdate/@item.TeacherID">
+                                Düzenle
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Teacher/TeacherFalse/@item.TeacherID">
+                                Pasif Yap
+                            </a>
+                            <a class="btn btn-success btn-sm" href="/Teacher/TeacherTrue/@item.TeacherID">
+                                Aktif Yap
+                            </a>
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model EntityLayer.Concrete.Student
+@{
+    ViewBag.Title = "StudentUpdate";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("StudentUpdate", "Student", FormMethod.Post))
+{
+    <br />
+    <div class="container-fluid col-8">
+
+        <h2 class="label">Öğrenci Güncelleme Sayfası</h2>
+
+        <form class="form-group" method="post">
+            @Html.HiddenFor(x => x.StudentID)
+            <br />
+            @Html.Label("Öğrenci Adı")
+            @Html.TextBoxFor(x => x.StudentName, new { @class = "form-control" })
+            <br />
+            @Html.Label("Öğrenci Soyadı")
+            @Html.TextBoxFor(x => x.StudentSurname, new { @class = "form-control" })
+            <br />
+            @Html.Label("Öğrenci Mail")
+            @Html.TextBoxFor(x => x.StudentMail, new { @class = "form-control" })
+            <br />
+            @Html.Label("Öğrenci Okul Numarası")
+            @Html.TextBoxFor(x => x.StudentNumber, new { @class = "form-control" })
+            <br />
+            @Html.Label("Öğrenci Cep Numarası")
+            @Html.TextBoxFor(x => x.StudentPhoneNumber, new { @class = "form-control" })
+            <br />
+            @Html.Label("Öğrenci Sınıf")
+            @Html.TextBoxFor(x => x.StudentGrade, new { @class = "form-control" })
+            <br />
+            @Html.Label("Atanacak Öğretmen Bilgileri")
+            @*@Html.TextBoxFor(x => x.Teacher.TeacherName, new { @class = "form-control" })*@
+            @Html.DropDownListFor(x => x.TeacherID, (List<SelectListItem>)ViewBag.Teachers, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-warning">Güncelle</button>
+        </form>
+    </div>
+}
+
+

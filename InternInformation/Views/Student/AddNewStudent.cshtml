@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrete.Student
+@{
+    ViewBag.Title = "AddNewStudent";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="container-fluid col-10 mt-3">
+    <h1 class="lead font-weight-normal">Öğrenci Ekle</h1>
+    <br />
+    <form method="post" class="form-group ">
+        @Html.Label("Öğrenci Adı")
+        @Html.TextBoxFor(x => x.StudentName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Öğrenci Soyadı")
+        @Html.TextBoxFor(x => x.StudentSurname, new { @class = "form-control" })
+        <br />
+        @Html.Label("Öğrenci Mail")
+        @Html.TextBoxFor(x => x.StudentMail, new { @class = "form-control" })
+        <br />
+        @Html.Label("Öğrenci Okul Numarası")
+        @Html.TextBoxFor(x => x.StudentNumber, new { @class = "form-control" })
+        <br />
+        @Html.Label("Öğrenci Cep Numarası")
+        @Html.TextBoxFor(x => x.StudentPhoneNumber, new { @class = "form-control" })
+        <br />
+        @Html.Label("Öğrenci Sınıf")
+        @Html.TextBoxFor(x => x.StudentGrade, new { @class = "form-control" })
+        <br />
+        @Html.Label("Atanacak Öğretmen Bilgileri")
+        @*@Html.TextBoxFor(x => x.Teacher.TeacherName, new { @class = "form-control" })*@
+        @Html.DropDownListFor(x => x.TeacherID, (List<SelectListItem>)ViewBag.Teachers, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+    </form>
+</div>
