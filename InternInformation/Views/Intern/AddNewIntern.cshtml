@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.Intern
+@{
+    ViewBag.Title = "AddNewIntern";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="container-fluid col-10 mt-3">
+    <h1 class="lead font-weight-normal">Staj Ekle</h1>
+    <br />
+    <form method="post" class="form-group ">
+        @Html.Label("Firma İsmi")
+        @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Firmadaki Sorumlusu")
+        @Html.TextBoxFor(x => x.CompanyResponsible, new { @class = "form-control" })
+        <br />
+        @Html.Label("Firmadaki Sorumlunun Numarası")
+        @Html.TextBoxFor(x => x.CompanyResponsibleNumber, new { @class = "form-control" })
+        <br />
+        @Html.Label("Başlangıç tarihi")
+        @Html.TextBoxFor(x => x.StartDate, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bitiş Tarihi")
+        @Html.TextBoxFor(x => x.FinishDate, new { @class = "form-control" })
+        <br />
+        @Html.Label("Staj Tipi")
+        @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })
+        <br />
+        @* Default 3 Eklenir *@
+        @*@Html.Label("Staj İlerleme Durumu")
+        @Html.DropDownListFor(x => x.InternStatusID, (List<SelectListItem>)ViewBag.InternStatus, new { @class = "form-control" })
+        <br />*@
+        @Html.Label("Öğrencinin Adı")
+        @Html.DropDownListFor(x => x.StudentID, (List<SelectListItem>)ViewBag.Students, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+    </form>
+</div>

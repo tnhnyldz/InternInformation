@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Intern>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container-fluid col-12 mt-3">
+    <div>
+        <h2>
+            Staj Tablosu
+        </h2>
+        <table class="table table-hover table-striped table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Staj ID</th>
+                    <th scope="col">Öğrenci Adı</th>
+                    <th scope="col">Firma Adı</th>
+                    <th scope="col">Firmadaki Sorumlusu</th>
+                    <th scope="col">Firmadaki Sorumlu Numara</th>
+                    <th scope="col">Başlangıç Tarihi</th>
+                    <th scope="col">Bitiş Tarihi</th>
+                    <th scope="col">Staj Tipi</th>
+                    <th scope="col">Staj İlerleme Durumu</th>
+                    <th scope="col" class="text-center" style="min-width: 300px;">İşlemler</th>
+                    <th scope="col">Staj Durumu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.InternID
+                        </td>
+                        <td>
+                            @item.Student.StudentName
+                            @item.Student.StudentSurname
+                        </td>
+                        <td>
+                            @item.CompanyName
+                        </td>
+                        <td>
+                            @item.CompanyResponsible
+                        </td>
+                        <td>
+                            @item.CompanyResponsibleNumber
+                        </td>
+                        <td>
+                            @item.StartDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @item.FinishDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @item.InternName.InternNamee
+                        </td>
+                        <td>
+                            @item.InternStatus.InternStatusName
+                        </td>
+
+                        <td class="project-actions text-center">
+                            <a class="btn btn-warning btn-sm" href="/Intern/InternUpdate/@item.InternID">
+                                Düzenle
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/Student/StudentFalse/@item.StudentID">
+                                Pasif Yap
+                            </a>
+                            <a class="btn btn-success btn-sm" href="/Student/StudentTrue/@item.StudentID">
+                                Aktif Yap
+                            </a>
+                        </td>
+                        <td>
+                            @item.InternStatuss
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

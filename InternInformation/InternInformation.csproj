@@ -129,12 +129,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InternController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper Classes\SendMail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2381,6 +2383,14 @@
     <Content Include="Views\Teacher\AddNewTeacher.cshtml" />
     <Content Include="Views\Teacher\CommisionPage.cshtml" />
     <Content Include="Views\Teacher\Teacherpage.cshtml" />
+    <Content Include="Views\Intern\Index.cshtml" />
+    <Content Include="Views\Intern\AddNewIntern.cshtml" />
+    <Content Include="Views\Intern\InternUpdate.cshtml" />
+    <Content Include="Views\Intern\cRequired.cshtml" />
+    <Content Include="Views\Intern\Confirmed.cshtml" />
+    <Content Include="Views\Intern\UnConfirmed.cshtml" />
+    <Content Include="Views\Intern\Completed.cshtml" />
+    <Content Include="Views\Shared\StudentLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

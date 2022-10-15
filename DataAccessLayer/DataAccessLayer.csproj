@@ -60,6 +60,10 @@
     <Compile Include="Abstract\ITeacherDal.cs" />
     <Compile Include="Concrete\Repository.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="Migrations\202210151834163_mig-2.cs" />
+    <Compile Include="Migrations\202210151834163_mig-2.designer.cs">
+      <DependentUpon>202210151834163_mig-2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,7 +71,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202210151834163_mig-2.resx">
+      <DependentUpon>202210151834163_mig-2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
       <Project>{2bfb3af7-bd55-45c5-9bf8-010a29e59038}</Project>

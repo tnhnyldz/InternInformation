@@ -23,6 +23,7 @@ namespace EntityLayer.Concrete
         public string StudentPhoneNumber { get; set; }
         [StringLength(10)]
         public string StudentGrade { get; set; }
+        public string StudentPassword { get; set; }
         public bool StudentStatus { get; set; }
         //Relations
         public int TeacherID { get; set; }
