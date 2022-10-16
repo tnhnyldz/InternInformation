@@ -17,6 +17,7 @@
                     <th scope="col">Öğretmen Soyisim</th>
                     <th scope="col">Komisyon mu ?</th>
                     <th scope="col">Öğretmen Durumu</th>
+                    <th scope="col">Öğretmen Mail</th>
                     <th scope="col" class="text-center" style="min-width: 300px;">İşlemler</th>
                 </tr>
             </thead>
@@ -39,6 +40,9 @@
                         <td>
                             @item.TeacherStatus
                         </td>
+                        <td>
+                            @item.TeacherMail
+                        </td>
                         <td class="project-actions text-center">
                             <a class="btn btn-warning btn-sm" href="/Teacher/TeacherUpdate/@item.TeacherID">
                                 Düzenle
@@ -49,7 +53,7 @@
                             <a class="btn btn-success btn-sm" href="/Teacher/TeacherTrue/@item.TeacherID">
                                 Aktif Yap
                             </a>
-                           
+
                         </td>
                     </tr>
                 }

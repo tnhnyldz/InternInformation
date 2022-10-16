@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer;
 using EntityLayer.Concrete;
+using InternInformation.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +57,21 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult AddNewStudent(Student p)
         {
-            
+            //yardımcı classdan bır nesne urettık
+            HelperClass helper = new HelperClass();
+            //eklenecek ogrencı ıcın rastgele bır sıfre olusturduk
+            var password = helper.generatePassword();
+            //ogrencinin mailini bir degiskene aldık
+            string ogrMail = p.StudentMail;
+            //ogrencının maılını ve sıfresını ona maıl atmak ıcın 
+            //helper classdakı maıl gonder butonuna yolluyoruz
+            helper.SendMailPassword(ogrMail, password);
+            //şifreyi md5 yaptık
+            var encryptedPass =helper.encrypt(password);
+
+            p.StudentPassword = encryptedPass;
+
+
             sm.AddStudentBusiness(p);
             return RedirectToAction("Index");
         }

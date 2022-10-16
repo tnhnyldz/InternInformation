@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using EntityLayer.Concrete;
+using InternInformation.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,20 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult AddNewTeacher(Teacher p)
         {
+            //yardımcı classdan bır nesne urettık
+            HelperClass helper = new HelperClass();
+            //eklenecek ogretmen ıcın rastgele bır sıfre olusturduk
+            var password = helper.generatePassword();
+            //ogretmen mailini bir degiskene aldık
+            string TchrMail = p.TeacherMail;
+            //ogretmen maılını ve sıfresını ona maıl atmak ıcın 
+            //helper classdakı maıl gonder butonuna yolluyoruz
+            helper.SendMailPassword(TchrMail, password);
+            //şifreyi helper classındakı metotla md5 yaptık
+            var encryptedPass = helper.encrypt(password);
+            //sıfreyı verıtabanına yolladık
+            p.TeacherPassword = encryptedPass;
+
             tm.AddTeacherBusiness(p);
             return RedirectToAction("Index");
         }
@@ -70,7 +85,7 @@ namespace InternInformation.Controllers
         //sadece komısyon sayfası
         public ActionResult CommisionPage()
         {
-           var commision= tm.GetAllCommision();
+            var commision = tm.GetAllCommision();
             return View(commision);
         }
         //sadece ogretmenler sayfası

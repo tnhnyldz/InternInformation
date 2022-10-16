@@ -16,6 +16,7 @@ namespace EntityLayer.Concrete
         [StringLength(30)]
         public string TeacherSurname { get; set; }
         public string TeacherPassword { get; set; }
+        public string TeacherMail { get; set; }
         public bool Commission { get; set; }
         public bool TeacherStatus { get; set; }
         //Relations

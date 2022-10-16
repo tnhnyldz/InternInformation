@@ -10,6 +10,8 @@ namespace BusinessLayer.Concrete
 {
     public class InternManager
     {
+
+        Helper2 helper2 = new Helper2();
         Repository<Intern> repoIntern = new Repository<Intern>();
         //bütün stajları Getiren metot
         public List<Intern> GetAll()
@@ -20,8 +22,8 @@ namespace BusinessLayer.Concrete
         public List<Intern> confirmRequiredBL()
         {
             return repoIntern.List()
-                .Where(x=>x.InternStatusID==3)
-                .ToList(); 
+                .Where(x => x.InternStatusID == 3)
+                .ToList();
         }
         //Tamamlanan stajları Getiren metot
         public List<Intern> CompletedBl()
@@ -44,6 +46,7 @@ namespace BusinessLayer.Concrete
                 .Where(x => x.InternStatusID == 4)
                 .ToList();
         }
+        //staj bulur
         public Intern Findintern(int id)
         {
             return repoIntern.Find(x => x.InternID == id);
@@ -51,7 +54,7 @@ namespace BusinessLayer.Concrete
         //Staj ekleyen metot
         public int AddInternBusiness(Intern p)
         {
-            if (p.CompanyName==null)
+            if (p.CompanyName == null)
             {
                 return -1;
             }
@@ -77,13 +80,22 @@ namespace BusinessLayer.Concrete
         public int confirmIntern(int id)
         {
             Intern intern = repoIntern.Find(x => x.InternID == id);
+            var nameSurname = intern.Student.StudentName + " " + intern.Student.StudentSurname;
+            var studentMail = intern.Student.StudentMail;
+            //degısıklıgı ogrencıye haber verıyor
+            helper2.stajDeğişiklik(nameSurname, studentMail);
             intern.InternStatusID = 8;
             return repoIntern.Update(intern);
-        } 
+        }
         //Stajı onaylamayan metot
         public int unconfirmIntern(int id)
         {
+            //HelperClass h = new HelperClass();
             Intern intern = repoIntern.Find(x => x.InternID == id);
+            var nameSurname = intern.Student.StudentName + " " + intern.Student.StudentSurname;
+            var studentMail = intern.Student.StudentMail;
+            //degısıklıgı ogrencıye haber verıyor
+            helper2.stajDeğişiklik(nameSurname, studentMail);
             intern.InternStatusID = 4;
             return repoIntern.Update(intern);
         }
@@ -91,6 +103,10 @@ namespace BusinessLayer.Concrete
         public int confirmWaiting(int id)
         {
             Intern intern = repoIntern.Find(x => x.InternID == id);
+            var nameSurname = intern.Student.StudentName + " " + intern.Student.StudentSurname;
+            var studentMail = intern.Student.StudentMail;
+            //degısıklıgı ogrencıye haber verıyor
+            helper2.stajDeğişiklik(nameSurname, studentMail);
             intern.InternStatusID = 3;
             return repoIntern.Update(intern);
         }
@@ -98,9 +114,13 @@ namespace BusinessLayer.Concrete
         public int completeBl(int id)
         {
             Intern intern = repoIntern.Find(x => x.InternID == id);
+            var nameSurname = intern.Student.StudentName + " " + intern.Student.StudentSurname;
+            var studentMail = intern.Student.StudentMail;
+            //degısıklıgı ogrencıye haber verıyor
+            helper2.stajDeğişiklik(nameSurname, studentMail);
             intern.InternStatusID = 1;
             return repoIntern.Update(intern);
         }
-        
+
     }
 }
