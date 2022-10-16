@@ -40,6 +40,7 @@ namespace InternInformation.Controllers
             return RedirectToAction("Index");
         }
         //öğrencılerı ekleyen metot
+        [HttpGet]
         public ActionResult AddNewStudent()
         {
             Context c = new Context();
@@ -55,6 +56,7 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult AddNewStudent(Student p)
         {
+            
             sm.AddStudentBusiness(p);
             return RedirectToAction("Index");
         }
