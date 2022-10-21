@@ -10,9 +10,13 @@ using System.Web.Mvc;
 
 namespace InternInformation.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
+        StudentProfileManager spm = new StudentProfileManager();
         StudentManager sm = new StudentManager();
+        InternManager ım = new InternManager();
+
         //ogrencılerı getırıp sayfaya yazan actıon
         public ActionResult Index()
         {
@@ -67,7 +71,7 @@ namespace InternInformation.Controllers
             //helper classdakı maıl gonder butonuna yolluyoruz
             helper.SendMailPassword(ogrMail, password);
             //şifreyi md5 yaptık
-            var encryptedPass =helper.encrypt(password);
+            var encryptedPass = helper.encrypt(password);
 
             p.StudentPassword = encryptedPass;
 
@@ -86,6 +90,49 @@ namespace InternInformation.Controllers
         {
             sm.StudentStatusTrue(id);
             return RedirectToAction("Index");
+        }
+        //ÖĞRENCİ TEMPLATE KULLANAN ACTIONLAR
+        //ogrencı anasayfa
+        public ActionResult StudentPage(string p)
+        {
+
+            p = (string)Session["StudentMail"];
+            var studentProfile = spm.GetStudentByMail(p);
+            return View(studentProfile);
+        }
+
+        //ogrencıye aıt stajları getırır
+        public ActionResult Interns(string p)
+        {
+            p = (string)Session["StudentMail"];
+            var studentProfile = spm.GetStudentByMail(p);
+            var Interns = spm.GetInternByStudentID(studentProfile[0].StudentID);
+            return View(Interns);
+        }
+        //ogrencı staj basvuru yapma
+        [HttpGet]
+        public ActionResult apply()
+        {
+            var p = (string)Session["StudentMail"];
+            var studentProfile = spm.GetStudentByMail(p);
+            Context c = new Context();
+            ViewBag.isim = studentProfile[0].StudentName;
+            ViewBag.soyisim = studentProfile[0].StudentSurname;
+            ViewBag.ID = studentProfile[0].StudentID;
+            List<SelectListItem> InternTypes = (from x in c.InternNames.ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = x.InternNamee,
+                                                    Value = x.InternNameID.ToString()
+                                                }).ToList();
+            ViewBag.InternTypes = InternTypes;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult apply(Intern p)
+        {
+            ım.AddInternBusiness(p);
+            return RedirectToAction("StudentPage");
         }
 
     }

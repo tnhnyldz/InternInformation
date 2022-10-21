@@ -9,7 +9,7 @@
     <link rel="icon" href="~/AdminLTE-3.0.4/dist/img/Kou_yuvarlak.png">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>KOU | Admin</title>
+    <title>KOU | Öğrenci</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Font Awesome -->
@@ -59,11 +59,11 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png"
+                <img src="~/AdminLTE-3.0.4/dist/img/Kou_yuvarlak.png"
                      alt="AdminLTE Logo"
                      class="brand-image img-circle elevation-3"
                      style="opacity: 0.8" />
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">Öğrenci Paneli</span>
             </a>
 
             <!-- Sidebar -->
@@ -86,130 +86,145 @@
                         data-widget="treeview"
                         role="menu"
                         data-accordion="false">
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item ">
+                            <a href="/Student/StudentPage/" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Staj İşlemleri
-                                    <i class="fas fa-angle-left right"></i>
+                                    Profili Düzenle
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Student/Index/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Staj Başvurusu yap</p>
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/Student/Interns/" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Stajlarım
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/Student/apply/" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                   Staj Başvurusunda Bulun
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/login/LogOutStudent/" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Çıkış Yap
+                                </p>
+                            </a>
                         </li>
                         @*<li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Öğretmen İşlemleri
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Teacher/Index/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Anasayfa</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Teacher/AddNewTeacher/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Öğretmen Ekle</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Teacher/CommisionPage/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Komisyonu Gör</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Teacher/Teacherpage/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Normal Öğretmenleri Gör</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Staj İşlemleri
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Intern/Index/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Anasayfa</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Intern/AddNewIntern/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Staj Ekle</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Intern/cRequired/" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-warning"></i>
-                                        <p>Onay Bekleyen Stajlar</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Intern/Confirmed/" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-success"></i>
-                                        <p>Onaylanan Stajlar</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Intern/UnConfirmed/" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-danger"></i>
-                                        <p>Onaylanmayan Stajlar</p>
-                                    </a>
-                                </li>
-                            </ul>
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Öğretmen İşlemleri
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Teacher/Index/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Anasayfa</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Teacher/AddNewTeacher/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Öğretmen Ekle</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Teacher/CommisionPage/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Komisyonu Gör</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Teacher/Teacherpage/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Normal Öğretmenleri Gör</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Staj İşlemleri
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Intern/Index/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Anasayfa</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Intern/AddNewIntern/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Staj Ekle</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Intern/cRequired/" class="nav-link">
+                        <i class="far fa-circle nav-icon text-warning"></i>
+                        <p>Onay Bekleyen Stajlar</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Intern/Confirmed/" class="nav-link">
+                        <i class="far fa-circle nav-icon text-success"></i>
+                        <p>Onaylanan Stajlar</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Intern/UnConfirmed/" class="nav-link">
+                        <i class="far fa-circle nav-icon text-danger"></i>
+                        <p>Onaylanmayan Stajlar</p>
+                    </a>
+                </li>
+            </ul>
 
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Intern/Completed/" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-primary"></i>
-                                        <p>Tamamlanan Stajlar</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Teacher/Teacherpage/" class="nav-link">
-                                        <i class="far fa-circle nav-icon text-info"></i>
-                                        <p>Eksik Belgeli Stajlar</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>*@
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Intern/Completed/" class="nav-link">
+                        <i class="far fa-circle nav-icon text-primary"></i>
+                        <p>Tamamlanan Stajlar</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/Teacher/Teacherpage/" class="nav-link">
+                        <i class="far fa-circle nav-icon text-info"></i>
+                        <p>Eksik Belgeli Stajlar</p>
+                    </a>
+                </li>
+            </ul>
+        </li>*@
                     </ul>
                 </nav>
             </div>

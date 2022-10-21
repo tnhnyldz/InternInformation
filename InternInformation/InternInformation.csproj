@@ -2391,6 +2391,11 @@
     <Content Include="Views\Intern\UnConfirmed.cshtml" />
     <Content Include="Views\Intern\Completed.cshtml" />
     <Content Include="Views\Shared\StudentLayout.cshtml" />
+    <Content Include="Views\login\StudentLogin.cshtml" />
+    <Content Include="Views\login\TeacherLogin.cshtml" />
+    <Content Include="Views\Student\StudentPage.cshtml" />
+    <Content Include="Views\Student\Interns.cshtml" />
+    <Content Include="Views\Student\apply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,12 +9,14 @@ using System.Web.Mvc;
 
 namespace InternInformation.Controllers
 {
+    [Authorize]
     public class InternController : Controller
     {
         InternManager ım = new InternManager();
         #region[CRUD Kısmı] 
 
         // Stajları listeler
+
         public ActionResult Index()
         {
             var interns = ım.GetAll();

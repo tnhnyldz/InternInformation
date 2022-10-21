@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Intern
+@{ string StudentName = ViewBag.isim;}
+@{ string StudentSurname = ViewBag.soyisim;}
+@{ int StudentID = ViewBag.ID;}
+@{
+    ViewBag.Title = "apply";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+
+}
+<div class="container-fluid col-10 mt-3">
+    <h1 class="lead font-weight-normal">Staja Başvur</h1>
+    <br />
+    @Html.Label("Öğrenci İsim")
+    @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @Value = StudentName, @readonly = true })
+    <br />
+    @Html.Label("Öğrenci Soyisim")
+    @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @Value = StudentSurname, @readonly = true })
+    <br />
+    <form method="post" class="form-group ">
+        @Html.Label("ÖğrenciID")
+        @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @Value = StudentID, @readonly = true })
+        <br />
+        @Html.Label("Firma İsmi")
+        @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Firmadaki Sorumlusu")
+        @Html.TextBoxFor(x => x.CompanyResponsible, new { @class = "form-control" })
+        <br />
+        @Html.Label("Firmadaki Sorumlunun Numarası")
+        @Html.TextBoxFor(x => x.CompanyResponsibleNumber, new { @class = "form-control" })
+        <br />
+        @Html.Label("Başlangıç tarihi")
+        @Html.TextBoxFor(x => x.StartDate, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bitiş Tarihi")
+        @Html.TextBoxFor(x => x.FinishDate, new { @class = "form-control" })
+        <br />
+        @Html.Label("Staj Tipi")
+        @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Başvur</button>
+    </form>
+</div>

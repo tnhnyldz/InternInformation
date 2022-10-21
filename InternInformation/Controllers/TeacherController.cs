@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace InternInformation.Controllers
 {
+    [Authorize]
     public class TeacherController : Controller
     {
         TeacherManager tm = new TeacherManager();

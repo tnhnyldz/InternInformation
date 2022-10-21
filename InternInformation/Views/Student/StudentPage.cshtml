@@ -1,0 +1,90 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Student>
+@{
+    ViewBag.Title = "StudentPage";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- /.col -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="tab-pane " id="settings">
+                        @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post))
+                        {
+                            foreach (var item in Model)
+                            {
+                                <form class="form-horizontal ">
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Öğrenci ID</label>
+                                        <div class="col-sm-10">
+                                            <input readonly class="form-control" name="StudentID" value="@item.StudentID">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Öğrenci Adı</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="StudentName" value="@item.StudentName">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail" class="col-sm-2 col-form-label">Öğrenci Soyadı</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="StudentSurname" value="@item.StudentSurname">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Öğrenci Mail</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="StudentMail" value="@item.StudentMail">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputExperience" class="col-sm-2 col-form-label">Öğrenci Okul NO</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="StudentNumber" value="@item.StudentNumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSkills" class="col-sm-2 col-form-label">Öğrenci Cep NO</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="StudentPhoneNumber" value="@item.StudentPhoneNumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSkills" class="col-sm-2 col-form-label">Öğrencinin Sınıfı</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="StudentGrade" value="@item.StudentGrade">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSkills" class="col-sm-2 col-form-label">Sorumlu Öğretmen Maili</label>
+                                        <div class="col-sm-10">
+                                            <input readonly type="text" class="form-control" value="@item.Teacher.TeacherMail">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSkills" class="col-sm-2 col-form-label">Sorumlu Öğretmen</label>
+                                        <div class="col-sm-10">
+                                            <input readonly type="text" class="form-control" value="@item.Teacher.TeacherName @item.Teacher.TeacherSurname">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-warning">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        }
+                    </div>
+                </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->
