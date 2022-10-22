@@ -142,5 +142,6 @@ namespace InternInformation.Controllers
             var interns = ım.completeBl(id);
             return RedirectToAction("Index");
         }
+      
     }
 }

@@ -112,26 +112,6 @@ namespace InternInformation.Controllers
             }
             return View();
         }
-        //şifre yenileme için kullanılacak
-        //[HttpGet]
-        //public ActionResult TeacherLogin()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult TeacherLogin(Teacher p)
-        //{
-        //    var adminInfo = c.Teachers.FirstOrDefault(x => x.TeacherMail == p.TeacherMail && x.TeacherPassword == p.TeacherPassword);
-        //    if (adminInfo != null)
-        //    {
-
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //    return View();
-        //}
         public ActionResult LogOutAdmin()
         {
             FormsAuthentication.SignOut();

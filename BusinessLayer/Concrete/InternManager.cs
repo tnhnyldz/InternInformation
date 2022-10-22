@@ -54,6 +54,27 @@ namespace BusinessLayer.Concrete
         //Staj ekleyen metot
         public int AddInternBusiness(Intern p)
         {
+            helper2 = new Helper2();
+            //staj1 ve staj2 için bu blok kullanılır
+            if (p.InternNameID == 1 || p.InternNameID == 2)
+            {
+                //helperdakı hesaplama fonk
+                var days = helper2.GetBusinessDays(p.StartDate, p.FinishDate);
+                if (days != 30.0)
+                {
+                    return -1;
+                }
+            }
+            //işyeri için bu blok kullanılır
+            if (p.InternNameID == 3)
+            {
+                //helperdakı hesaplama fonk
+                var days = helper2.GetBusinessDays(p.StartDate, p.FinishDate);
+                if (days != 70.0)
+                {
+                    return -1;
+                }
+            }
             if (p.CompanyName == null)
             {
                 return -1;
