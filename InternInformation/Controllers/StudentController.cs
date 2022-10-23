@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using InternInformation.Helper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -126,14 +127,23 @@ namespace InternInformation.Controllers
                                                     Value = x.InternNameID.ToString()
                                                 }).ToList();
             ViewBag.InternTypes = InternTypes;
+            var stajMetni = studentProfile[0].StudentName + "_" + studentProfile[0].StudentSurname+"-Başvuru_Belgesi";
+            ViewBag.stajMetni = stajMetni;
             return View();
         }
         [HttpPost]
         public ActionResult apply(Intern p)
         {
+            //dosyayı alıp proje ıcıne kaydedecek
+            string fileName = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
+            string extension = Path.GetExtension(p.UploadFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            p.Filepath = "~/StajBelgeleri/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
+            p.UploadFile.SaveAs(fileName);
             ım.AddInternBusiness(p);
             return RedirectToAction("StudentPage");
         }
-
+       
     }
 }

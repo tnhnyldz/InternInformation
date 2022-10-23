@@ -3,6 +3,7 @@ using DataAccessLayer;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -53,6 +54,14 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult AddNewIntern(Intern p)
         {
+            //dosyayı alıp proje ıcıne kaydedecek
+            string fileName = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
+            string extension = Path.GetExtension(p.UploadFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            p.Filepath = "~/StajBelgeleri/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
+            p.UploadFile.SaveAs(fileName);
+
             ım.AddInternBusiness(p);
             return RedirectToAction("Index");
         }
@@ -142,6 +151,6 @@ namespace InternInformation.Controllers
             var interns = ım.completeBl(id);
             return RedirectToAction("Index");
         }
-      
+
     }
 }

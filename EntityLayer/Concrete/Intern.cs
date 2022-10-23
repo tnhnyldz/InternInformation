@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace EntityLayer.Concrete
 {
@@ -20,6 +22,14 @@ namespace EntityLayer.Concrete
 
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
+
+        //file upload
+        public string Title { get; set; }
+        public string Filepath { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase UploadFile { get; set; }
+
+        //file upload
         public bool InternStatuss { get; set; }
         //Relations 
         public int InternNameID { get; set; }

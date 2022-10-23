@@ -6,7 +6,8 @@
 <div class="container-fluid col-10 mt-3">
     <h1 class="lead font-weight-normal">Staj Ekle</h1>
     <br />
-    <form method="post" class="form-group ">
+    @using (Html.BeginForm("AddNewIntern", "Intern", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
         @Html.Label("Firma İsmi")
         @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control" })
         <br />
@@ -22,6 +23,12 @@
         @Html.Label("Bitiş Tarihi")
         @Html.TextBoxFor(x => x.FinishDate, new { @class = "form-control", @id = "finishDate" })
         <br />
+        @Html.Label("Staj Belgesi İsmi")
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        <br />
+        @Html.Label("Staj Belgesi Yükleme")
+        <input type="file" name="UploadFile">
+        <br />
         @Html.Label("Staj Tipi")
         @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })
         <br />
@@ -33,7 +40,7 @@
         @Html.DropDownListFor(x => x.StudentID, (List<SelectListItem>)ViewBag.Students, new { @class = "form-control" })
         <br />
         <button class="btn btn-primary" id="">Ekle</button>
-    </form>
+    }
     <button onclick="func1()" class="btn btn-primary" id="tus">HEsapla</button>
 </div>
 <script type="text/javascript">

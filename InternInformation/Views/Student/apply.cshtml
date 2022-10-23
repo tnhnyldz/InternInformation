@@ -2,6 +2,8 @@
 @{ string StudentName = ViewBag.isim;}
 @{ string StudentSurname = ViewBag.soyisim;}
 @{ int StudentID = ViewBag.ID;}
+@{ string Belge = ViewBag.stajMetni;}
+
 @{
     ViewBag.Title = "apply";
     Layout = "~/Views/Shared/StudentLayout.cshtml";
@@ -16,7 +18,9 @@
     @Html.Label("Öğrenci Soyisim")
     @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @Value = StudentSurname, @readonly = true })
     <br />
-    <form method="post" class="form-group ">
+
+    @using (Html.BeginForm("apply", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
         @Html.Label("ÖğrenciID")
         @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @Value = StudentID, @readonly = true })
         <br />
@@ -35,9 +39,15 @@
         @Html.Label("Bitiş Tarihi")
         @Html.TextBoxFor(x => x.FinishDate, new { @class = "form-control" })
         <br />
+        @Html.Label("Staj Belgesi İsmi")
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @Value = Belge, @readonly = true })
+        <br />
+        @Html.Label("Staj Belgesi Yükleme")
+        <input type="file" name="UploadFile">
+        <br />
         @Html.Label("Staj Tipi")
         @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })
         <br />
         <button class="btn btn-primary">Başvur</button>
-    </form>
+    }
 </div>
