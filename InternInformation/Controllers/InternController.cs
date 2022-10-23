@@ -54,14 +54,13 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult AddNewIntern(Intern p)
         {
-            //dosyayı alıp proje ıcıne kaydedecek
+            //basvuru formunu alıp proje ıcıne kaydedecek
             string fileName = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
             string extension = Path.GetExtension(p.UploadFile.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
             p.Filepath = "~/StajBelgeleri/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
             p.UploadFile.SaveAs(fileName);
-
             ım.AddInternBusiness(p);
             return RedirectToAction("Index");
         }

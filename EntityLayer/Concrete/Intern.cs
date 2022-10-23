@@ -28,6 +28,11 @@ namespace EntityLayer.Concrete
         public string Filepath { get; set; }
         [NotMapped]
         public HttpPostedFileBase UploadFile { get; set; }
+        //staj defterı yukleme
+        public string TitleStajDefteri { get; set; }
+        public string FilepathStajDefteri { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase UploadStajDefter { get; set; }
 
         //file upload
         public bool InternStatuss { get; set; }

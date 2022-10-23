@@ -129,6 +129,8 @@ namespace InternInformation.Controllers
             ViewBag.InternTypes = InternTypes;
             var stajMetni = studentProfile[0].StudentName + "_" + studentProfile[0].StudentSurname+"-Başvuru_Belgesi";
             ViewBag.stajMetni = stajMetni;
+            var stajDefteri = studentProfile[0].StudentName + "_" + studentProfile[0].StudentSurname + "-StajDefteri";
+            ViewBag.stajDefteri = stajDefteri;
             return View();
         }
         [HttpPost]
@@ -141,7 +143,16 @@ namespace InternInformation.Controllers
             p.Filepath = "~/StajBelgeleri/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
             p.UploadFile.SaveAs(fileName);
+
+            //dosyayı alıp proje ıcıne kaydedecek
+            string fileName2 = Path.GetFileNameWithoutExtension(p.UploadStajDefter.FileName);
+            string extension2 = Path.GetExtension(p.UploadStajDefter.FileName);
+            fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension;
+            p.FilepathStajDefteri = "~/StajDefterleri/" + fileName2;
+            fileName2 = Path.Combine(Server.MapPath("~/StajDefterleri/"), fileName2);
+            p.UploadFile.SaveAs(fileName2);
             ım.AddInternBusiness(p);
+
             return RedirectToAction("StudentPage");
         }
        

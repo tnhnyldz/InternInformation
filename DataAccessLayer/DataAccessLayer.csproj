@@ -76,6 +76,10 @@
     <Compile Include="Migrations\202210231115220_mig-5.designer.cs">
       <DependentUpon>202210231115220_mig-5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210231609180_mig-6.cs" />
+    <Compile Include="Migrations\202210231609180_mig-6.designer.cs">
+      <DependentUpon>202210231609180_mig-6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210231115220_mig-5.resx">
       <DependentUpon>202210231115220_mig-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210231609180_mig-6.resx">
+      <DependentUpon>202210231609180_mig-6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

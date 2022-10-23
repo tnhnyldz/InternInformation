@@ -3,6 +3,7 @@
 @{ string StudentSurname = ViewBag.soyisim;}
 @{ int StudentID = ViewBag.ID;}
 @{ string Belge = ViewBag.stajMetni;}
+@{ string Defter = ViewBag.stajDefteri;}
 
 @{
     ViewBag.Title = "apply";
@@ -44,6 +45,12 @@
         <br />
         @Html.Label("Staj Belgesi Yükleme")
         <input type="file" name="UploadFile">
+        <br />
+        @Html.Label("Staj Defteri İsmi")
+        @Html.TextBoxFor(x => x.TitleStajDefteri, new { @class = "form-control", @Value = Defter, @readonly = true })
+        <br />
+        @Html.Label("Staj Belgesi Yükleme")
+        <input type="file" name="UploadStajDefter">
         <br />
         @Html.Label("Staj Tipi")
         @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })
