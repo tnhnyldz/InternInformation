@@ -43,14 +43,16 @@
                     <img src="~/LoginAdmin-1/images/Koulogo.png" alt="IMG" />
                 </div>
 
-                <form class="login100-form validate-form">
+
+                @using (Html.BeginForm("TeacherLogin", "login", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
                     <span class="login100-form-title">Staj Bilgi Sistemi Öğretmen Girişi </span>
 
                     <div class="wrap-input100 validate-input"
                          data-validate="Valid email is required: ex@abc.xyz">
                         <input class="input100"
                                type="text"
-                               name="email"
+                               name="TeacherMail"
                                placeholder="Öğretmen Mail" />
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -62,7 +64,7 @@
                          data-validate="Password is required">
                         <input class="input100"
                                type="password"
-                               name="pass"
+                               name="TeacherPassword"
                                placeholder="Şifre" />
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -89,8 +91,9 @@
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>
                     </div>
-                </form>
+                }
             </div>
+            <a class="login100-form-title text-white" href="">Yardım</a>
         </div>
     </div>
 

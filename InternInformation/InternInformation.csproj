@@ -137,6 +137,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\HelperClass.cs" />
+    <Compile Include="Helper\HelperClass3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2396,6 +2397,11 @@
     <Content Include="Views\Student\StudentPage.cshtml" />
     <Content Include="Views\Student\Interns.cshtml" />
     <Content Include="Views\Student\apply.cshtml" />
+    <Content Include="Views\Shared\TeacherLayout.cshtml" />
+    <Content Include="Views\Teacher\TeacherHomePage.cshtml" />
+    <Content Include="Views\Teacher\MyStudents.cshtml" />
+    <Content Include="Views\Teacher\InternDetailsTeacher.cshtml" />
+    <Content Include="Views\Student\addNewDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

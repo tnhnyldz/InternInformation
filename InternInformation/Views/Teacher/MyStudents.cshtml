@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Student>
+@{
+    ViewBag.Title = "MyStudents";
+    Layout = "~/Views/Shared/TeacherLayout.cshtml";
+}
+
+<div class="container-fluid col-12 mt-3">
+    <div>
+        <h2>
+            @ViewBag.TeacherName öğretmenine atanan öğrenciler
+        </h2>
+        <table class="table table-hover table-striped table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Öğrenci ID</th>
+                    <th scope="col">Öğrenci İsmi</th>
+                    <th scope="col">Öğrenci Soyisim</th>
+                    <th scope="col">Öğrenci Mail</th>
+                    <th scope="col">Öğrenci Numara</th>
+                    <th scope="col">Öğrenci Telefon Numarası</th>
+                    <th scope="col">Öğrenci Sınıf</th>
+                    <th scope="col">Öğrencilik Durumu</th>
+                    <th scope="col" class="text-center" style="min-width: 300px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.StudentID
+                        </td>
+                        <td>
+                            @item.StudentName
+                        </td>
+                        <td>
+                            @item.StudentSurname
+                        </td>
+                        <td>
+                            @item.StudentMail
+                        </td>
+                        <td>
+                            @item.StudentNumber
+                        </td>
+                        <td>
+                            @item.StudentPhoneNumber
+                        </td>
+                        <td>
+                            @item.StudentGrade
+                        </td>
+                        <td>
+                            @item.StudentStatus
+                        </td>
+                        <td class="project-actions text-center">
+                            <a class="btn btn-danger btn-sm" href="/Teacher/InternDetailsTeacher/@item.StudentID">
+                               Staj Detaylarını Gör
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

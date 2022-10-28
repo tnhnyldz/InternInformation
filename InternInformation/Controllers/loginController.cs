@@ -101,16 +101,29 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult TeacherLogin(Teacher p)
         {
-            var adminInfo = c.Teachers.FirstOrDefault(x => x.TeacherMail == p.TeacherMail && x.TeacherPassword == p.TeacherPassword);
-            if (adminInfo != null)
-            {
+            var maıl = "tunahanyildiz1560@gmail.com";
+            var sıfre = "926675";
+            //giriş yapmaya çalışan öğretmenin MD5 şfresini aldık
+            var TeacherPassword = c.Teachers
+               .Where(x => x.TeacherMail == p.TeacherMail)
+               .Select(x => x.TeacherPassword)
+               .FirstOrDefault();
+            //Şifreyi normal hale getırdık
+            var decryptedTeacherPassword = hc.decrypt(TeacherPassword);
 
+            //öğretmen bilgilerini aldık
+            var TeacherInfo = c.Teachers.
+                FirstOrDefault(x => x.TeacherMail == p.TeacherMail && decryptedTeacherPassword == p.TeacherPassword);
+            if (TeacherInfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(TeacherInfo.TeacherMail, false);
+                Session["TeacherMail"] = TeacherInfo.TeacherMail;
+                return RedirectToAction("TeacherHomePage", "Teacher");
             }
             else
             {
-
+                return RedirectToAction("TeacherLogin", "login");
             }
-            return View();
         }
         public ActionResult LogOutAdmin()
         {
@@ -123,6 +136,12 @@ namespace InternInformation.Controllers
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("StudentLogin", "login");
+        }
+        public ActionResult LogOutTeacher()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("TeacherLogin", "login");
         }
     }
 }

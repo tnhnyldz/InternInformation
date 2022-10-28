@@ -42,7 +42,7 @@ namespace InternInformation.Controllers
                                                      Value = x.InternStatusID.ToString()
                                                  }).ToList();
             ViewBag.InternStatus = InternStatus;
-            List<SelectListItem> Students = (from x in c.Students.ToList()
+            List<SelectListItem> Students = (from x in c.Students.OrderBy(y =>y.StudentName).ToList()
                                              select new SelectListItem
                                              {
                                                  Text = x.StudentName + " " + x.StudentSurname,

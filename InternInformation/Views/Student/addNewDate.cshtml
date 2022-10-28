@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.Intern
+@{
+    ViewBag.Title = "addNewDate";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<div class="container-fluid col-10 mt-3">
+    <h1 class="lead font-weight-normal">Tarih giriniz</h1>
+    <br />
+    @using (Html.BeginForm("addNewDate", "Student", FormMethod.Post))
+    {
+        @Html.Label("başlangıç Tarihini giriniz")
+        @Html.TextBoxFor(x => x.StartDate, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary" id="">Hesapla</button>
+    }
+    <br />
+    @Html.Label("Staj Bitiş ")
+    @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @Value = @ViewBag.staj, @readonly = true })
+    <br />
+    @Html.Label("İme Bitiş")
+    @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control", @Value = @ViewBag.İme, @readonly = true })
+    <br />
+    @{ DateTime StartDate = DateTime.Now;}
+    <h1 class="lead font-weight-normal">Staja bugün başlarsanız</h1>
+    <br />
+    <div class="c-unit-02">
+        Staj 1: <span> @StartDate.ToString("dd MMMM") -@InternInformation.Helper.HelperClass3.AddBusinessDays(StartDate, 30).ToString("dd MMMM")</span>
+    </div>
+    <div class="c-unit-02">
+        Staj 2: <span> @StartDate.ToString("dd MMMM") -@InternInformation.Helper.HelperClass3.AddBusinessDays(StartDate, 30).ToString("dd MMMM")</span>
+    </div>
+    <div class="c-unit-02">
+        İME: <span> @StartDate.ToString("dd MMMM") -@InternInformation.Helper.HelperClass3.AddBusinessDays(StartDate, 70).ToString("dd MMMM")</span>
+    </div>
+    <br />
+</div>

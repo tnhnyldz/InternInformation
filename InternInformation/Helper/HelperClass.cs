@@ -82,5 +82,6 @@ namespace InternInformation.Helper
 
             return calcBusinessDays;
         }
+       
     }
 }

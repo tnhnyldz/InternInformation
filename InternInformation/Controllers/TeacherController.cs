@@ -13,6 +13,7 @@ namespace InternInformation.Controllers
     [Authorize]
     public class TeacherController : Controller
     {
+        StudentProfileManager spm = new StudentProfileManager();
         TeacherManager tm = new TeacherManager();
         //öğretmenleri getırıp sayfaya yazan actıon
         public ActionResult Index()
@@ -95,5 +96,30 @@ namespace InternInformation.Controllers
             var teacher = tm.GetAllTeachers();
             return View(teacher);
         }
+        //TEACHER TEMPLATEINI KULLANAN ACTIONLAR
+        //ogretmen profılını getırır
+        public ActionResult TeacherHomePage()
+        {
+            var p = (string)Session["TeacherMail"];
+            var TeacherProfile = spm.GetTeacherByMail(p);
+            return View(TeacherProfile);
+        }
+        //ogretmene atanan öğrencileri getirir
+        public ActionResult MyStudents()
+        {
+            var p = (string)Session["TeacherMail"];
+            var TeacherProfile = spm.GetTeacherByMail(p);
+            ViewBag.TeacherName = TeacherProfile[0].TeacherName + " " + TeacherProfile[0].TeacherSurname;
+            var students = spm.GetStudentsByTeacher(TeacherProfile[0].TeacherID);
+            return View(students);
+        }
+        //ogrencılerın staj detaylarına giden sayfa
+        public ActionResult InternDetailsTeacher(int id)
+        {
+            var interns = spm.GetInternByStudentID(id);
+            ViewBag.studentName = interns[0].Student.StudentName + " " + interns[0].Student.StudentSurname;
+            return View(interns);
+        }
+
     }
 }

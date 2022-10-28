@@ -17,7 +17,6 @@ namespace InternInformation.Controllers
         StudentProfileManager spm = new StudentProfileManager();
         StudentManager sm = new StudentManager();
         InternManager ım = new InternManager();
-
         //ogrencılerı getırıp sayfaya yazan actıon
         public ActionResult Index()
         {
@@ -94,18 +93,18 @@ namespace InternInformation.Controllers
         }
         //ÖĞRENCİ TEMPLATE KULLANAN ACTIONLAR
         //ogrencı anasayfa
-        public ActionResult StudentPage(string p)
+        public ActionResult StudentPage()
         {
 
-            p = (string)Session["StudentMail"];
+            var p = (string)Session["StudentMail"];
             var studentProfile = spm.GetStudentByMail(p);
             return View(studentProfile);
         }
 
         //ogrencıye aıt stajları getırır
-        public ActionResult Interns(string p)
+        public ActionResult Interns()
         {
-            p = (string)Session["StudentMail"];
+            var p = (string)Session["StudentMail"];
             var studentProfile = spm.GetStudentByMail(p);
             var Interns = spm.GetInternByStudentID(studentProfile[0].StudentID);
             return View(Interns);
@@ -127,7 +126,7 @@ namespace InternInformation.Controllers
                                                     Value = x.InternNameID.ToString()
                                                 }).ToList();
             ViewBag.InternTypes = InternTypes;
-            var stajMetni = studentProfile[0].StudentName + "_" + studentProfile[0].StudentSurname+"-Başvuru_Belgesi";
+            var stajMetni = studentProfile[0].StudentName + "_" + studentProfile[0].StudentSurname + "-Başvuru_Belgesi";
             ViewBag.stajMetni = stajMetni;
             var stajDefteri = studentProfile[0].StudentName + "_" + studentProfile[0].StudentSurname + "-StajDefteri";
             ViewBag.stajDefteri = stajDefteri;
@@ -145,6 +144,7 @@ namespace InternInformation.Controllers
             p.UploadFile.SaveAs(fileName);
 
             //dosyayı alıp proje ıcıne kaydedecek
+            //buraya if koyulup default belge adı verılecek
             string fileName2 = Path.GetFileNameWithoutExtension(p.UploadStajDefter.FileName);
             string extension2 = Path.GetExtension(p.UploadStajDefter.FileName);
             fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension;
@@ -155,6 +155,25 @@ namespace InternInformation.Controllers
 
             return RedirectToAction("StudentPage");
         }
-       
+      
+        [HttpGet]
+        public ActionResult addNewDate()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult addNewDate(Intern p)
+        {
+            var tarih = p.StartDate;
+            var staj= HelperClass3.AddBusinessDays(p.StartDate, 30)
+                .ToString("dd MMMM yyyy");
+            var İme = HelperClass3.AddBusinessDays(p.StartDate, 70)
+                .ToString("dd MMMM yyyy");
+            ViewBag.staj = staj;
+            ViewBag.İme = İme;
+            return View();
+        }
+     
+
     }
 }
