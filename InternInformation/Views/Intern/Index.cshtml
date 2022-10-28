@@ -1,4 +1,9 @@
-﻿@model IEnumerable<EntityLayer.Concrete.Intern>
+﻿@*@model IEnumerable<EntityLayer.Concrete.Intern>*@
+
+@model PagedList.IPagedList<EntityLayer.Concrete.Intern>
+@using PagedList
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -81,5 +86,9 @@
                 }
             </tbody>
         </table>
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+        {
+            LiElementClasses = new List<string> { "page-link" }
+        })
     </div>
 </div>

@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PagedList;
+using PagedList.Mvc;
+
+
 
 namespace BusinessLayer.Concrete
 {
@@ -78,6 +82,13 @@ namespace BusinessLayer.Concrete
             if (p.CompanyName == null)
             {
                 return -1;
+            }
+            var ogrID = p.StudentID;
+            var interns=repoIntern.List().Where(x=>x.StudentID==ogrID).ToList();
+            if (interns.Count()>=3)
+            {
+                return -1;
+
             }
             //her staj default olarak onay gereklı tıpıne eklenır
             p.InternStatusID = 3;

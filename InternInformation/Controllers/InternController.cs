@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace InternInformation.Controllers
 {
@@ -18,9 +20,10 @@ namespace InternInformation.Controllers
 
         // Stajları listeler
 
-        public ActionResult Index()
+        public ActionResult Index(int sayfa = 1)
         {
-            var interns = ım.GetAll();
+            var interns = ım.GetAll()
+                .ToPagedList(sayfa, 5); 
             return View(interns);
         }
         //Stajları ekleyen actıon
@@ -103,7 +106,7 @@ namespace InternInformation.Controllers
         #endregion
 
         //onay bekleyen stajları gosteren actıon
-        public ActionResult cRequired()
+        public ActionResult cRequired(int sayfa=1)
         {
             var interns = ım.confirmRequiredBL();
             return View(interns);

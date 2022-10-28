@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace InternInformation.Controllers
 {
@@ -18,9 +20,9 @@ namespace InternInformation.Controllers
         StudentManager sm = new StudentManager();
         InternManager ım = new InternManager();
         //ogrencılerı getırıp sayfaya yazan actıon
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var students = sm.GetAll();
+            var students = sm.GetAll().ToPagedList(sayfa, 5);
             return View(students);
         }
         //ogrencılerı guncellemek ıcın gereken actıon 
@@ -138,16 +140,27 @@ namespace InternInformation.Controllers
             //dosyayı alıp proje ıcıne kaydedecek
             string fileName = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
             string extension = Path.GetExtension(p.UploadFile.FileName);
-            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            fileName = fileName + extension;
             p.Filepath = "~/StajBelgeleri/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
             p.UploadFile.SaveAs(fileName);
 
             //dosyayı alıp proje ıcıne kaydedecek
             //buraya if koyulup default belge adı verılecek
-            string fileName2 = Path.GetFileNameWithoutExtension(p.UploadStajDefter.FileName);
-            string extension2 = Path.GetExtension(p.UploadStajDefter.FileName);
-            fileName2 = fileName2 + DateTime.Now.ToString("yymmssfff") + extension;
+
+            string fileName2 = "Staj_Defteri_Yok";
+            string extension2 = ".pdf";
+            if (p.UploadFile.FileName!=null)
+            {
+                string fileName3 = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
+                string extension3 = Path.GetExtension(p.UploadFile.FileName);
+                fileName3 = fileName3 + extension3;
+                p.FilepathStajDefteri = "~/StajDefterleri/" + fileName3;
+                fileName3 = Path.Combine(Server.MapPath("~/StajDefterleri/"), fileName3);
+                p.UploadFile.SaveAs(fileName3);
+                ım.AddInternBusiness(p);
+            }
+            fileName2 = fileName2 + extension2;
             p.FilepathStajDefteri = "~/StajDefterleri/" + fileName2;
             fileName2 = Path.Combine(Server.MapPath("~/StajDefterleri/"), fileName2);
             p.UploadFile.SaveAs(fileName2);
