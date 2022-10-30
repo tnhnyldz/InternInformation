@@ -102,14 +102,75 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a href="/Student/apply/" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Staj Başvurusunda Bulun
-                                </p>
-                            </a>
-                        </li>
+                        @if (User.IsInRole("A"))
+                        {
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Staj İşlemleri
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Intern/Index/" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Anasayfa</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Intern/AddNewIntern/" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Staj Ekle</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Intern/cRequired/" class="nav-link">
+                                            <i class="far fa-circle nav-icon text-warning"></i>
+                                            <p>Onay Bekleyen Stajlar</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Intern/Confirmed/" class="nav-link">
+                                            <i class="far fa-circle nav-icon text-success"></i>
+                                            <p>Onaylanan Stajlar</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Intern/UnConfirmed/" class="nav-link">
+                                            <i class="far fa-circle nav-icon text-danger"></i>
+                                            <p>Onaylanmayan Stajlar</p>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Intern/Completed/" class="nav-link">
+                                            <i class="far fa-circle nav-icon text-primary"></i>
+                                            <p>Tamamlanan Stajlar</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Intern/Completed/" class="nav-link">
+                                            <i class="far fa-circle nav-icon text-indigo"></i>
+                                            <p>Tamamlanmamış Stajlar</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                         <li class="nav-item ">
                             <a href="/login/LogOutTeacher/" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -118,7 +179,7 @@
                                 </p>
                             </a>
                         </li>
-                   
+
                     </ul>
                 </nav>
             </div>

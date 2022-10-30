@@ -55,6 +55,7 @@ namespace BusinessLayer.Concrete
         {
             Teacher teacher = repoTchr.Find(x => x.TeacherID == id);
             teacher.Commission = true;
+            teacher.TeacherRole = "A";
             return repoTchr.Update(teacher);
         }
         //Öğretmeni öğretmen yapan metot
@@ -62,6 +63,7 @@ namespace BusinessLayer.Concrete
         {
             Teacher teacher = repoTchr.Find(x => x.TeacherID == id);
             teacher.Commission = false;
+            teacher.TeacherRole = "B";
             return repoTchr.Update(teacher);
         }
         //Öğretmeni güncelleyen metot
@@ -79,6 +81,7 @@ namespace BusinessLayer.Concrete
         //Öğretmeni ekleyen metot
         public int AddTeacherBusiness(Teacher p)
         {
+            p.TeacherRole = "B";
             if (p.TeacherName == "" ||
                 p.TeacherSurname == "")
             {

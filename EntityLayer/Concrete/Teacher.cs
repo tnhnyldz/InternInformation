@@ -18,6 +18,8 @@ namespace EntityLayer.Concrete
         public string TeacherPassword { get; set; }
         public string TeacherMail { get; set; }
         public bool Commission { get; set; }
+        [StringLength(1)]
+        public string TeacherRole { get; set; }
         public bool TeacherStatus { get; set; }
         //Relations
         public ICollection<Student> Students { get; set; }

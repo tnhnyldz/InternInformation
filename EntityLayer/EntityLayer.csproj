@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Admin.cs" />
+    <Compile Include="Concrete\Help.cs" />
     <Compile Include="Concrete\Intern.cs" />
     <Compile Include="Concrete\InternName.cs" />
     <Compile Include="Concrete\InternStatus.cs" />

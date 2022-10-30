@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Concrete\AdminManager.cs" />
     <Compile Include="Concrete\Helper2.cs" />
+    <Compile Include="Concrete\HelpManager.cs" />
     <Compile Include="Concrete\InternManager.cs" />
     <Compile Include="Concrete\StudentManager.cs" />
     <Compile Include="Concrete\StudentProfileManager.cs" />

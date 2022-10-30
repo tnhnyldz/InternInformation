@@ -134,6 +134,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InternController.cs" />
     <Compile Include="Controllers\loginController.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Helper\HelperClass.cs" />
     <Compile Include="Helper\HelperClass3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles\AdminRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminLTE-3.0.4\.gitignore" />
@@ -1985,6 +1987,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="HelpPages\index.html" />
+    <Content Include="HelpPages\style.css" />
     <Content Include="LoginAdmin-1\css\main.css" />
     <Content Include="LoginAdmin-1\css\util.css" />
     <Content Include="LoginAdmin-1\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -2403,6 +2407,9 @@
     <Content Include="Views\Teacher\MyStudents.cshtml" />
     <Content Include="Views\Teacher\InternDetailsTeacher.cshtml" />
     <Content Include="Views\Student\addNewDate.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
+    <Content Include="Views\Help\HelpPage.cshtml" />
+    <Content Include="Views\Help\UpdateHelp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,5 +16,6 @@ namespace DataAccessLayer
         public DbSet<InternStatus> InternStatuss { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Help> Helps { get; set; }
     }
 }

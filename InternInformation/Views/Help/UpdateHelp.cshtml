@@ -1,0 +1,40 @@
+﻿@model EntityLayer.Concrete.Help
+
+@{
+    ViewBag.Title = "UpdateHelp";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("UpdateHelp", "Help", FormMethod.Post))
+{
+    <br />
+    <div class="container-fluid col-8">
+
+        <h2 class="label">Yardım Kısmı Güncelleme Sayfası</h2>
+
+        <form class="form-group" method="post">
+            @Html.Label("Başlık 1")
+            @Html.TextBoxFor(x => x.HelpTitle, new { @class = "form-control" })
+            <br />
+            @Html.Label("Başlık 2")
+            @Html.TextBoxFor(x => x.HelpTitle2, new { @class = "form-control" })
+            <br />
+            @Html.Label("Logo")
+            @Html.TextBoxFor(x => x.HelpLogo, new { @class = "form-control" })
+            <br />
+            @Html.Label("İçerik 1")
+            @Html.TextBoxFor(x => x.HelpContent1, new { @class = "form-control" })
+            <br />
+            @Html.Label("İçerik 2")
+            @Html.TextBoxFor(x => x.HelpContent2,new { @class = "form-control" })
+            <br />
+            @Html.Label("İçerik 3")
+            @Html.TextBoxFor(x => x.HelpContent3, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-warning">Güncelle</button>
+        </form>
+    </div>
+}
+
