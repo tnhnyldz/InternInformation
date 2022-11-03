@@ -19,6 +19,7 @@ namespace InternInformation.Controllers
         StudentProfileManager spm = new StudentProfileManager();
         StudentManager sm = new StudentManager();
         InternManager ım = new InternManager();
+        HelperClass helper = new HelperClass();
         //ogrencılerı getırıp sayfaya yazan actıon
         public ActionResult Index(int sayfa=1)
         {
@@ -95,14 +96,38 @@ namespace InternInformation.Controllers
         }
         //ÖĞRENCİ TEMPLATE KULLANAN ACTIONLAR
         //ogrencı anasayfa
+        [HttpGet]
         public ActionResult StudentPage()
+        {
+            
+            var p = (string)Session["StudentMail"];
+            var studentProfile = spm.GetStudentByMail(p);
+            var Password = studentProfile[0].StudentPassword;
+            var DecryptedPassword= helper.decrypt(Password);
+            studentProfile[0].StudentPassword = DecryptedPassword;
+            return View(studentProfile);
+        }
+        [HttpPost]
+        public ActionResult StudentPage(Student student)
         {
 
             var p = (string)Session["StudentMail"];
-            var studentProfile = spm.GetStudentByMail(p);
-            return View(studentProfile);
-        }
 
+            var studentProfile = spm.GetStudentByMail(p);
+
+            var teacherIDold = studentProfile[0].TeacherID;
+
+            var newPassword = student.StudentPassword;
+
+            var EncryptedPassword = helper.encrypt(newPassword);
+
+            student.StudentPassword = EncryptedPassword;
+
+            student.TeacherID = teacherIDold;
+            
+            sm.UpdateStudent(student);
+            return RedirectToAction("StudentPage");
+        }
         //ogrencıye aıt stajları getırır
         public ActionResult Interns()
         {
@@ -186,7 +211,17 @@ namespace InternInformation.Controllers
             ViewBag.İme = İme;
             return View();
         }
-     
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(Student p)
+        {
+            return View();
+        }
+
 
     }
 }

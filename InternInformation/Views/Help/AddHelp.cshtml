@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.Help
+
+@{
+    ViewBag.Title = "AddHelp";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container-fluid col-10 mt-3">
+    <h1 class="lead font-weight-normal">Yeni Yardım Metni Ekleme</h1>
+    <br />
+    <form method="post" class="form-group ">
+        @Html.Label("İlk Başlık")
+        @Html.TextBoxFor(x => x.HelpTitle, new { @class = "form-control" })
+        <br />
+        @Html.Label("İkinci Başlık")
+        @Html.TextBoxFor(x => x.HelpTitle2, new { @class = "form-control" })
+        <br />
+        @Html.Label("Logo Link")
+        @Html.TextBoxFor(x => x.HelpLogo, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yardım İçeriği 1")
+        @Html.TextBoxFor(x => x.HelpContent1, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yardım İçeriği 2")
+        @Html.TextBoxFor(x => x.HelpContent2, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yardım İçeriği 3")
+        @Html.TextBoxFor(x => x.HelpContent3, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+    </form>
+</div>

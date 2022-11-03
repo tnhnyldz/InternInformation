@@ -2410,6 +2410,7 @@
     <Content Include="Views\Help\Index.cshtml" />
     <Content Include="Views\Help\HelpPage.cshtml" />
     <Content Include="Views\Help\UpdateHelp.cshtml" />
+    <Content Include="Views\Help\AddHelp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -32,12 +32,24 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult UpdateHelp(Help p)
         {
-        
-            return View();
+            hm.UpdateHelp(p);
+            return RedirectToAction("Index");
         }
+        [HttpGet]
         public ActionResult AddHelp()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult AddHelp(Help p)
+        {
+            hm.AddHelpBusiness(p);
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeleteHelp(int id)
+        {
+            hm.DeleteHelp(id);
+            return RedirectToAction("Index");
         }
     }
 }

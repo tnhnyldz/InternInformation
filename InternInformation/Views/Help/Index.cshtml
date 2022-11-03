@@ -10,7 +10,7 @@
         <h2>
             Yardım İçeriği Tablosu
         </h2>
-        <a class="btn btn-success btn-sm" href="/Student/StudentTrue/">
+        <a class="btn btn-success btn-sm" href="/Help/AddHelp/">
            Yardım İçeriği Ekle
         </a>
         <table class="table table-hover table-striped table-bordered mt-3">
@@ -55,11 +55,9 @@
                             <a class="btn btn-warning btn-sm" href="/Help/UpdateHelp/@item.HelpID">
                                 Düzenle
                             </a>
-                            <a class="btn btn-danger btn-sm" href="/Student/StudentFalse/@item.HelpID">
-                                Pasif Yap
-                            </a>
-                            <a class="btn btn-success btn-sm" href="/Student/StudentTrue/@item.HelpID">
-                                Aktif Yap
+
+                            <a class="btn btn-danger btn-sm" href="/Help/DeleteHelp/@item.HelpID">
+                                Sil
                             </a>
                         </td>
                     </tr>

@@ -13,6 +13,7 @@ namespace InternInformation.Controllers
     [Authorize]
     public class TeacherController : Controller
     {
+        HelperClass helper = new HelperClass();
         StudentProfileManager spm = new StudentProfileManager();
         TeacherManager tm = new TeacherManager();
         //öğretmenleri getırıp sayfaya yazan actıon
@@ -98,11 +99,40 @@ namespace InternInformation.Controllers
         }
         //TEACHER TEMPLATEINI KULLANAN ACTIONLAR
         //ogretmen profılını getırır
+        [HttpGet]
         public ActionResult TeacherHomePage()
         {
             var p = (string)Session["TeacherMail"];
+
             var TeacherProfile = spm.GetTeacherByMail(p);
+
+            var Password = TeacherProfile[0].TeacherPassword;
+
+            var DecryptedPassword = helper.decrypt(Password);
+
+            TeacherProfile[0].TeacherPassword = DecryptedPassword;
+
             return View(TeacherProfile);
+        }
+        [HttpPost]
+        public ActionResult TeacherHomePage(Teacher teacher)
+        {
+            var p = (string)Session["TeacherMail"];
+
+            var TeacherProfile = spm.GetTeacherByMail(p);
+
+            teacher.TeacherID = TeacherProfile[0].TeacherID;
+
+            var newPassword = teacher.TeacherPassword;
+
+            var EncryptedPassword = helper.encrypt(newPassword);
+
+            teacher.TeacherPassword = EncryptedPassword;
+
+
+            tm.UpdateTeacher(teacher);
+
+            return RedirectToAction("TeacherHomePage");
         }
         //ogretmene atanan öğrencileri getirir
         public ActionResult MyStudents()

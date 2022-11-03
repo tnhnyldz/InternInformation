@@ -48,6 +48,7 @@ namespace BusinessLayer.Concrete
             student.StudentPhoneNumber = p.StudentPhoneNumber;
             student.StudentGrade = p.StudentGrade;
             student.TeacherID = p.TeacherID;
+            student.StudentPassword= p.StudentPassword;
             return repoStudent.Update(student);
         }
         //öğrenciyi ekleyen metot

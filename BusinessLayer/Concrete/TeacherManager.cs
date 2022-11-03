@@ -72,6 +72,7 @@ namespace BusinessLayer.Concrete
             Teacher teacher = new Teacher();
             teacher = repoTchr.Find(x => x.TeacherID == p.TeacherID);
             teacher.TeacherID = p.TeacherID;
+            teacher.TeacherPassword = p.TeacherPassword;
             teacher.TeacherName = p.TeacherName;
             teacher.TeacherSurname = p.TeacherSurname;
             teacher.Commission = p.Commission;

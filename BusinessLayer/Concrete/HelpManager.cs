@@ -19,18 +19,28 @@ namespace BusinessLayer.Concrete
         {
             return repoHelp.Find(x => x.HelpID == id);
         }
-        //public int UpdateHelp(Student p)
-        //{
-        //    Student student = new Student();
-        //    student = repoStudent.Find(x => x.StudentID == p.StudentID);
-        //    student.StudentName = p.StudentName;
-        //    student.StudentSurname = p.StudentSurname;
-        //    student.StudentMail = p.StudentMail;
-        //    student.StudentNumber = p.StudentNumber;
-        //    student.StudentPhoneNumber = p.StudentPhoneNumber;
-        //    student.StudentGrade = p.StudentGrade;
-        //    student.TeacherID = p.TeacherID;
-        //    return repoStudent.Update(student);
-        //}
+        public int UpdateHelp(Help p)
+        {
+            Help help = new Help();
+            help = repoHelp.Find(x => x.HelpID == p.HelpID);
+            help.HelpID = p.HelpID;
+            help.HelpTitle = p.HelpTitle;
+            help.HelpTitle2 = p.HelpTitle2;
+            help.HelpLogo= p.HelpLogo;
+            help.HelpContent1 = p.HelpContent1;
+            help.HelpContent2 = p.HelpContent2; 
+            help.HelpContent3 = p.HelpContent3; 
+            return repoHelp.Update(help);
+        }
+        public int AddHelpBusiness(Help p)
+        {
+            return repoHelp.Insert(p);
+        }
+        public int DeleteHelp(int id)
+        {
+            Help help = new Help();
+            help = repoHelp.Find(x => x.HelpID == id);
+            return repoHelp.Delete(help);
+        }
     }
 }
