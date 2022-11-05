@@ -64,7 +64,7 @@ namespace InternInformation.Controllers
         public ActionResult StudentLogin(Student p)
         {
             var ogrencı ="tunahanyildiz@outlook.it";
-            var sifre=893884;
+            var sifre=123456;
             var ogrencı1 = "tunahandevv@gmail.com";
             var sifre1 = 794113;
             //giriş yapmaya çalışan ogrencının mail

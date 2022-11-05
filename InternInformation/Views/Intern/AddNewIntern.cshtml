@@ -23,11 +23,8 @@
         @Html.Label("Bitiş Tarihi")
         @Html.TextBoxFor(x => x.FinishDate, new { @class = "form-control", @id = "finishDate" })
         <br />
-        @Html.Label("Staj Belgesi İsmi")
-        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
-        <br />
-        @Html.Label("Staj Belgesi Yükleme")
-        <input type="file" name="UploadFile">
+        @Html.Label("Staj Belgesi")
+        <input type="file" name="StajBelgesi"/>
         <br />
         @Html.Label("Staj Tipi")
         @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })

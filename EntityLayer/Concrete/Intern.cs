@@ -24,15 +24,8 @@ namespace EntityLayer.Concrete
         public DateTime FinishDate { get; set; }
 
         //file upload
-        public string Title { get; set; }
-        public string Filepath { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase UploadFile { get; set; }
-        //staj defterı yukleme
-        public string TitleStajDefteri { get; set; }
-        public string FilepathStajDefteri { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase UploadStajDefter { get; set; }
+        public string StajBelgesi { get; set; }
+        public string StajDefteri { get; set; }
 
         //file upload
         public bool InternStatuss { get; set; }

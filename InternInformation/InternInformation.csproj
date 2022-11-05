@@ -2415,8 +2415,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="StajBelgeleri\" />
-    <Folder Include="StajDefterleri\" />
+    <Folder Include="StajBelgeleri2\" />
+    <Folder Include="StajDefterleri2\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>

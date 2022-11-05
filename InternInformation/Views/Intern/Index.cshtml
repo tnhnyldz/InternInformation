@@ -27,6 +27,7 @@
                     <th scope="col">Staj Tipi</th>
                     <th scope="col">Staj İlerleme Durumu</th>
                     <th scope="col">Staj Başvuru Belgesi</th>
+                    <th scope="col">Staj Defteri</th>
                     <th scope="col" class="text-center" style="min-width: 300px;">İşlemler</th>
                     <th scope="col">Staj Durumu</th>
                 </tr>
@@ -64,8 +65,12 @@
                             @item.InternStatus.InternStatusName
                         </td>
                         <td class="text-center">
-                            @item.Title <br /><br />
-                            <a class="btn btn-dark btn-sm" href="@Url.Content(@item.Filepath)">Detaylı Gör</a>
+                            Staj Belgesi <br /><br />
+                            <a class="btn btn-dark btn-sm text-white" href=" @item.StajBelgesi">Detaylı Gör</a>
+                        </td>
+                        <td class="text-center">
+                            Staj Defteri <br /><br />
+                            <a class="btn btn-dark btn-sm text-white" href=" @item.StajDefteri">Detaylı Gör</a>
                         </td>
 
                         <td class="project-actions text-center">

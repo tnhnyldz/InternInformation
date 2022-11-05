@@ -23,7 +23,7 @@ namespace InternInformation.Controllers
         public ActionResult Index(int sayfa = 1)
         {
             var interns = ım.GetAll()
-                .ToPagedList(sayfa, 5); 
+                .ToPagedList(sayfa, 5);
             return View(interns);
         }
         //Stajları ekleyen actıon
@@ -45,7 +45,7 @@ namespace InternInformation.Controllers
                                                      Value = x.InternStatusID.ToString()
                                                  }).ToList();
             ViewBag.InternStatus = InternStatus;
-            List<SelectListItem> Students = (from x in c.Students.OrderBy(y =>y.StudentName).ToList()
+            List<SelectListItem> Students = (from x in c.Students.OrderBy(y => y.StudentName).ToList()
                                              select new SelectListItem
                                              {
                                                  Text = x.StudentName + " " + x.StudentSurname,
@@ -57,13 +57,15 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult AddNewIntern(Intern p)
         {
-            //basvuru formunu alıp proje ıcıne kaydedecek
-            string fileName = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
-            string extension = Path.GetExtension(p.UploadFile.FileName);
-            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            p.Filepath = "~/StajBelgeleri/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
-            p.UploadFile.SaveAs(fileName);
+            if (Request.Files.Count > 0)
+            {
+                string dosyaadi = Path.GetFileNameWithoutExtension(Request.Files[0].FileName);
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string yol = "~/StajBelgeleri2/" + dosyaadi + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+                p.StajBelgesi = "/StajBelgeleri2/" + dosyaadi + uzanti;
+                p.StajDefteri = null;
+            }
             ım.AddInternBusiness(p);
             return RedirectToAction("Index");
         }
@@ -106,7 +108,7 @@ namespace InternInformation.Controllers
         #endregion
 
         //onay bekleyen stajları gosteren actıon
-        public ActionResult cRequired(int sayfa=1)
+        public ActionResult cRequired(int sayfa = 1)
         {
             var interns = ım.confirmRequiredBL();
             return View(interns);

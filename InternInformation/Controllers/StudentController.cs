@@ -162,35 +162,59 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult apply(Intern p)
         {
-            //dosyayı alıp proje ıcıne kaydedecek
-            string fileName = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
-            string extension = Path.GetExtension(p.UploadFile.FileName);
-            fileName = fileName + extension;
-            p.Filepath = "~/StajBelgeleri/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
-            p.UploadFile.SaveAs(fileName);
+            ////dosyayı alıp proje ıcıne kaydedecek
+            //string fileName = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
+            //string extension = Path.GetExtension(p.UploadFile.FileName);
+            //fileName = fileName + extension;
+            //p.Filepath = "~/StajBelgeleri/" + fileName;
+            //fileName = Path.Combine(Server.MapPath("~/StajBelgeleri/"), fileName);
+            //p.UploadFile.SaveAs(fileName);
 
-            //dosyayı alıp proje ıcıne kaydedecek
-            //buraya if koyulup default belge adı verılecek
+            ////dosyayı alıp proje ıcıne kaydedecek
+            ////buraya if koyulup default belge adı verılecek
 
-            string fileName2 = "Staj_Defteri_Yok";
-            string extension2 = ".pdf";
-            if (p.UploadFile.FileName!=null)
+            //string fileName2 = "Staj_Defteri_Yok";
+            //string extension2 = ".pdf";
+            //if (p.UploadFile.FileName!=null)
+            //{
+            //    string fileName3 = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
+            //    string extension3 = Path.GetExtension(p.UploadFile.FileName);
+            //    fileName3 = fileName3 + extension3;
+            //    p.FilepathStajDefteri = "~/StajDefterleri/" + fileName3;
+            //    fileName3 = Path.Combine(Server.MapPath("~/StajDefterleri/"), fileName3);
+            //    p.UploadFile.SaveAs(fileName3);
+            //    ım.AddInternBusiness(p);
+            //}
+            //fileName2 = fileName2 + extension2;
+            //p.FilepathStajDefteri = "~/StajDefterleri/" + fileName2;
+            //fileName2 = Path.Combine(Server.MapPath("~/StajDefterleri/"), fileName2);
+            //p.UploadFile.SaveAs(fileName2);
+            //ım.AddInternBusiness(p);
+            if (Request.Files.Count > 0)
             {
-                string fileName3 = Path.GetFileNameWithoutExtension(p.UploadFile.FileName);
-                string extension3 = Path.GetExtension(p.UploadFile.FileName);
-                fileName3 = fileName3 + extension3;
-                p.FilepathStajDefteri = "~/StajDefterleri/" + fileName3;
-                fileName3 = Path.Combine(Server.MapPath("~/StajDefterleri/"), fileName3);
-                p.UploadFile.SaveAs(fileName3);
-                ım.AddInternBusiness(p);
+                if (Request.Files[1].FileName == "")
+                {
+                    string dosyaadi2 = "Staj_Defteri_Yok";
+                    string uzanti2 = ".pdf";
+                    string yol2 = "~/StajDefterleri2/" + dosyaadi2 + uzanti2;
+                    Request.Files[1].SaveAs(Server.MapPath(yol2));
+                    p.StajDefteri = "/StajDefterleri2/" + dosyaadi2 + uzanti2;
+                }
+                else
+                {
+                    string dosyaadi2 = Path.GetFileNameWithoutExtension(Request.Files[1].FileName);
+                    string uzanti2 = Path.GetExtension(Request.Files[1].FileName);
+                    string yol2 = "~/StajDefterleri2/" + dosyaadi2 + uzanti2;
+                    Request.Files[1].SaveAs(Server.MapPath(yol2));
+                    p.StajDefteri = "/StajDefterleri2/" + dosyaadi2 + uzanti2;
+                }
+                string dosyaadi = Path.GetFileNameWithoutExtension(Request.Files[0].FileName);
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string yol = "~/StajBelgeleri2/" + dosyaadi + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+                p.StajBelgesi = "/StajBelgeleri2/" + dosyaadi + uzanti;
             }
-            fileName2 = fileName2 + extension2;
-            p.FilepathStajDefteri = "~/StajDefterleri/" + fileName2;
-            fileName2 = Path.Combine(Server.MapPath("~/StajDefterleri/"), fileName2);
-            p.UploadFile.SaveAs(fileName2);
             ım.AddInternBusiness(p);
-
             return RedirectToAction("StudentPage");
         }
       

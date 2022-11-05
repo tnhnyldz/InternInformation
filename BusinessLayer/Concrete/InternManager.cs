@@ -85,11 +85,11 @@ namespace BusinessLayer.Concrete
             }
             var ogrID = p.StudentID;
             var interns=repoIntern.List().Where(x=>x.StudentID==ogrID).ToList();
-            if (interns.Count()>=3)
-            {
-                return -1;
+            //if (interns.Count()>=3)
+            //{
+            //    return -1;
 
-            }
+            //}
             //her staj default olarak onay gereklı tıpıne eklenır
             p.InternStatusID = 3;
             return repoIntern.Insert(p);

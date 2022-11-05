@@ -40,17 +40,11 @@
         @Html.Label("Bitiş Tarihi")
         @Html.TextBoxFor(x => x.FinishDate, new { @class = "form-control" })
         <br />
-        @Html.Label("Staj Belgesi İsmi")
-        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @Value = Belge, @readonly = true })
+        @Html.Label("Staj Belgesi")
+        <input type="file" name="StajBelgesi" />
         <br />
-        @Html.Label("Staj Belgesi Yükleme")
-        <input type="file" name="UploadFile">
-        <br />
-        @Html.Label("Staj Defteri İsmi")
-        @Html.TextBoxFor(x => x.TitleStajDefteri, new { @class = "form-control", @Value = Defter, @readonly = true })
-        <br />
-        @Html.Label("Staj Belgesi Yükleme")
-        <input type="file" name="UploadStajDefter">
+        @Html.Label("Staj Defteri")
+        <input type="file" name="StajDefteri" />
         <br />
         @Html.Label("Staj Tipi")
         @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })
