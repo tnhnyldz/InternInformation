@@ -14,7 +14,6 @@ namespace BusinessLayer.Concrete
 {
     public class InternManager
     {
-
         Helper2 helper2 = new Helper2();
         Repository<Intern> repoIntern = new Repository<Intern>();
         //bütün stajları Getiren metot

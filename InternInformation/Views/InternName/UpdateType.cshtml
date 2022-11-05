@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.InternName
+
+@{
+    ViewBag.Title = "UpdateType";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateType", "InternName", FormMethod.Post))
+{
+    <br />
+    <div class="container-fluid col-8">
+
+        <h2 class="label">Yardım Kısmı Güncelleme Sayfası</h2>
+
+        <form class="form-group" method="post">
+            @Html.HiddenFor(x => x.InternNameID)
+            @Html.Label("Stajın İsmi")
+            @Html.TextBoxFor(x => x.InternNamee, new { @class = "form-control" })
+            <br />
+            @Html.Label("Açıklama")
+            @Html.TextBoxFor(x => x.InternNameDesc, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-warning">Güncelle</button>
+        </form>
+    </div>
+}

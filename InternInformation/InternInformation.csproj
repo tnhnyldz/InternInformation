@@ -137,6 +137,7 @@
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InternController.cs" />
+    <Compile Include="Controllers\InternNameController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -2411,6 +2412,9 @@
     <Content Include="Views\Help\HelpPage.cshtml" />
     <Content Include="Views\Help\UpdateHelp.cshtml" />
     <Content Include="Views\Help\AddHelp.cshtml" />
+    <Content Include="Views\InternName\Index.cshtml" />
+    <Content Include="Views\InternName\AddNewType.cshtml" />
+    <Content Include="Views\InternName\UpdateType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
