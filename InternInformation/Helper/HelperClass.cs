@@ -24,19 +24,19 @@ namespace InternInformation.Helper
         public void SendMailPassword(string mail, string sifre)
         {
 
-            MailMessage eposta = new MailMessage();
-            eposta.From = new MailAddress("KOUSTAJ2022@outlook.com");
-            eposta.To.Add(mail);
-            eposta.Subject = "KOU Staj Sistemi şifreniz";
-            eposta.Body = "KOU Staj Sistemine Kaydoldunuz şifreniz: " + sifre;
+            //MailMessage eposta = new MailMessage();
+            //eposta.From = new MailAddress("KOUSTAJ2022@outlook.com");
+            //eposta.To.Add(mail);
+            //eposta.Subject = "KOU Staj Sistemi şifreniz";
+            //eposta.Body = "KOU Staj Sistemine Kaydoldunuz şifreniz: " + sifre;
 
-            SmtpClient smtp = new SmtpClient();
-            smtp.Credentials = new System.Net.NetworkCredential("KOUSTAJ2022@outlook.com", "Yazlab2022.");
-            smtp.Host = "smtp.outlook.com";
-            smtp.EnableSsl = true;
-            smtp.Port = 587;
+            //SmtpClient smtp = new SmtpClient();
+            //smtp.Credentials = new System.Net.NetworkCredential("KOUSTAJ2022@outlook.com", "Yazlab2022.");
+            //smtp.Host = "smtp.outlook.com";
+            //smtp.EnableSsl = true;
+            //smtp.Port = 587;
 
-            smtp.Send(eposta);
+            //smtp.Send(eposta);
             Console.WriteLine("gonderıldı");
         }
         string hash = "";

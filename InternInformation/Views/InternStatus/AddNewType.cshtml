@@ -1,0 +1,20 @@
+﻿@model EntityLayer.Concrete.InternStatus
+
+@{
+    ViewBag.Title = "AddNewType";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container-fluid col-10 mt-3">
+    <h1 class="lead font-weight-normal">Yeni Staj Aşaması Ekleme Sayfası</h1>
+    <br />
+    <form method="post" class="form-group ">
+        @Html.Label("Staj aşaması adı")
+        @Html.TextBoxFor(x => x.InternStatusName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Açıklama")
+        @Html.TextBoxFor(x => x.InternStatusDesc, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Ekle</button>
+    </form>
+</div>

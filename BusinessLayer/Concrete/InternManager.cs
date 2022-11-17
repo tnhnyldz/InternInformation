@@ -35,6 +35,20 @@ namespace BusinessLayer.Concrete
                 .Where(x => x.InternStatusID == 1)
                 .ToList();
         }
+        // eksik belgeli stajlari getiren metot
+        public List<Intern> EksikBelgelLİsteleBL()
+        {
+            return repoIntern.List()
+                .Where(x => x.InternStatusID == 5)
+                .ToList();
+        }
+        // eksik belgeli stajlari getiren metot
+        public List<Intern> GetirDegerlendirmeBl()
+        {
+            return repoIntern.List()
+                .Where(x => x.InternStatusID == 6)
+                .ToList();
+        }
         //Onaylanan stajları Getiren metot
         public List<Intern> confirmedBl()
         {
@@ -47,6 +61,13 @@ namespace BusinessLayer.Concrete
         {
             return repoIntern.List()
                 .Where(x => x.InternStatusID == 4)
+                .ToList();
+        }
+        //Onaylanmayan stajları Getiren metot
+        public List<Intern> UnCompletedBl()
+        {
+            return repoIntern.List()
+                .Where(x => x.InternStatusID == 2)
                 .ToList();
         }
         //staj bulur
@@ -141,6 +162,17 @@ namespace BusinessLayer.Concrete
             intern.InternStatusID = 3;
             return repoIntern.Update(intern);
         }
+        //Stajı eksik Belge durumuna getiren metot
+        public int EksikBelgeBL(int id)
+        {
+            Intern intern = repoIntern.Find(x => x.InternID == id);
+            var nameSurname = intern.Student.StudentName + " " + intern.Student.StudentSurname;
+            var studentMail = intern.Student.StudentMail;
+            //degısıklıgı ogrencıye haber verıyor
+            helper2.stajDeğişiklik(nameSurname, studentMail);
+            intern.InternStatusID = 5;
+            return repoIntern.Update(intern);
+        }
         //Stajı tamamlayan metot
         public int completeBl(int id)
         {
@@ -152,6 +184,26 @@ namespace BusinessLayer.Concrete
             intern.InternStatusID = 1;
             return repoIntern.Update(intern);
         }
-
+        //Stajı Degerlendırme asamasına getiren metot
+        public int DegerlendırmeBL(int id)
+        {
+            Intern intern = repoIntern.Find(x => x.InternID == id);
+            var nameSurname = intern.Student.StudentName + " " + intern.Student.StudentSurname;
+            var studentMail = intern.Student.StudentMail;
+            //degısıklıgı ogrencıye haber verıyor
+            helper2.stajDeğişiklik(nameSurname, studentMail);
+            intern.InternStatusID = 6;
+            return repoIntern.Update(intern);
+        }
+        public int UNcompleteBl(int id)
+        {
+            Intern intern = repoIntern.Find(x => x.InternID == id);
+            var nameSurname = intern.Student.StudentName + " " + intern.Student.StudentSurname;
+            var studentMail = intern.Student.StudentMail;
+            //degısıklıgı ogrencıye haber verıyor
+            helper2.stajDeğişiklik(nameSurname, studentMail);
+            intern.InternStatusID = 2;
+            return repoIntern.Update(intern);
+        }
     }
 }

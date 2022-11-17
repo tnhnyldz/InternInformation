@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace InternInformation.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HelpController : Controller
     {
         // GET: Help

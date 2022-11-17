@@ -63,10 +63,6 @@ namespace InternInformation.Controllers
         [HttpPost]
         public ActionResult StudentLogin(Student p)
         {
-            var ogrencı ="tunahanyildiz@outlook.it";
-            var sifre=123456;
-            var ogrencı1 = "tunahandevv@gmail.com";
-            var sifre1 = 794113;
             //giriş yapmaya çalışan ogrencının mail
             //adresinden md5 şifresini aldık
             var studentPassword = c.Students
@@ -102,7 +98,7 @@ namespace InternInformation.Controllers
         public ActionResult TeacherLogin(Teacher p)
         {
             var maıl = "tunahanyildiz1560@gmail.com";
-            var sıfre = "926675";
+            var sıfre = "353456";
             //giriş yapmaya çalışan öğretmenin MD5 şfresini aldık
             var TeacherPassword = c.Teachers
                .Where(x => x.TeacherMail == p.TeacherMail)

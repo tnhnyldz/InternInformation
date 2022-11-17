@@ -138,6 +138,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InternController.cs" />
     <Compile Include="Controllers\InternNameController.cs" />
+    <Compile Include="Controllers\InternStatusController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -2415,6 +2416,12 @@
     <Content Include="Views\InternName\Index.cshtml" />
     <Content Include="Views\InternName\AddNewType.cshtml" />
     <Content Include="Views\InternName\UpdateType.cshtml" />
+    <Content Include="Views\InternStatus\Index.cshtml" />
+    <Content Include="Views\InternStatus\AddNewType.cshtml" />
+    <Content Include="Views\InternStatus\UpdateType.cshtml" />
+    <Content Include="Views\Intern\EksikBelgeList.cshtml" />
+    <Content Include="Views\Intern\GetirDegerlendirme.cshtml" />
+    <Content Include="Views\Intern\UnCompleted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

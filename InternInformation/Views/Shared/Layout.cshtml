@@ -1,5 +1,4 @@
-﻿
-@{
+﻿ @{
     Layout = null;
 }
 
@@ -56,8 +55,7 @@
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4"> 
             <a href="#" class="brand-link">
                 <img src="~/AdminLTE-3.0.4/dist/img/Kou_yuvarlak.png"
                      alt="AdminLTE Logo"
@@ -69,16 +67,16 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                @*<div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg"
                              class="img-circle elevation-2"
                              alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">KOU Yonetici</a>
                     </div>
-                </div>
+                </div>*@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -202,6 +200,22 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="/Intern/GetirDegerlendirme/" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-cyan"></i>
+                                        <p>Değerlendirme Aşaması</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Intern/EksikBelgeList/" class="nav-link">
+                                        <i class="far fa-circle nav-icon text-fuchsia"></i>
+                                        <p>Eksik Belgeli Stajlar</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
                                     <a href="/Intern/UnConfirmed/" class="nav-link">
                                         <i class="far fa-circle nav-icon text-danger"></i>
                                         <p>Onaylanmayan Stajlar</p>
@@ -213,15 +227,15 @@
                                 <li class="nav-item">
                                     <a href="/Intern/Completed/" class="nav-link">
                                         <i class="far fa-circle nav-icon text-primary"></i>
-                                        <p>Tamamlanan Stajlar</p>
+                                        <p>Başarılı Stajlar</p>
                                     </a>
                                 </li>
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/Intern/Completed/" class="nav-link">
+                                    <a href="/Intern/UnCompleted/" class="nav-link">
                                         <i class="far fa-circle nav-icon text-indigo"></i>
-                                        <p>Tamamlanmamış Stajlar</p>
+                                        <p>Başarısız Stajlar</p>
                                     </a>
                                 </li>
                             </ul>
@@ -240,13 +254,13 @@
                             <a href="/InternName/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Staj Türü Düzenleme
+                                    Staj Tipi Düzenleme
                                     @*<i class="fas fa-angle-left right"></i>*@
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/Help/Index/" class="nav-link">
+                            <a href="/InternStatus/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Staj Aşamalarını Düzenleme

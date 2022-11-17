@@ -137,6 +137,18 @@ namespace InternInformation.Controllers
             ım.confirmIntern(id);
             return RedirectToAction("Index");
         }
+        //Stajları eksik belge yapan action
+        public ActionResult EksikBelge(int id)
+        {
+            ım.EksikBelgeBL(id);
+            return RedirectToAction("Index");
+        }
+        //eksik belgeleri listeleyen action
+        public ActionResult EksikBelgeList()
+        {
+            var interns = ım.EksikBelgelLİsteleBL();
+            return View(interns);
+        }
         //Stajlardaki onayı kaldıran actıon
         public ActionResult UnConfirm(int id)
         {
@@ -155,6 +167,29 @@ namespace InternInformation.Controllers
             var interns = ım.completeBl(id);
             return RedirectToAction("Index");
         }
-
+        //Stajı Değerlendirme aşamasına alan action
+        public ActionResult Degerlendirme(int id)
+        {
+            var interns = ım.DegerlendırmeBL(id);
+            return RedirectToAction("Index");
+        }
+        //Stajı Değerlendirme aşamasına alan action
+        public ActionResult GetirDegerlendirme()
+        {
+            var interns = ım.GetirDegerlendirmeBl();
+            return View(interns);
+        }
+        //Stajı başarısız aşamasına alan action
+        public ActionResult UNcomplete(int id)
+        {
+            var interns = ım.UNcompleteBl(id);
+            return RedirectToAction("Index");
+        }
+        //Stajı Değerlendirme aşamasına alan action
+        public ActionResult UnCompleted()
+        {
+            var interns = ım.UnCompletedBl();
+            return View(interns);
+        }
     }
 }
