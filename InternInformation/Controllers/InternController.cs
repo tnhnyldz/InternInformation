@@ -31,7 +31,7 @@ namespace InternInformation.Controllers
         public ActionResult AddNewIntern()
         {
             Context c = new Context();
-            List<SelectListItem> InternTypes = (from x in c.InternNames.ToList()
+            List<SelectListItem> InternTypes = (from x in c.InternNames.Where(x => x.InternStatus).ToList()
                                                 select new SelectListItem
                                                 {
                                                     Text = x.InternNamee,
@@ -102,7 +102,7 @@ namespace InternInformation.Controllers
         public ActionResult InternUpdate(Intern p)
         {
             ım.UpdateIntern(p);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Student");
         }
 
         #endregion

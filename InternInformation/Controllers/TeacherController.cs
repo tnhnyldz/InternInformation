@@ -147,7 +147,12 @@ namespace InternInformation.Controllers
         public ActionResult InternDetailsTeacher(int id)
         {
             var interns = spm.GetInternByStudentID(id);
-            ViewBag.studentName = interns[0].Student.StudentName + " " + interns[0].Student.StudentSurname;
+            string studentFullName = "";
+            if (interns != null || interns.Count != 0)
+            {
+                studentFullName = interns[0].Student.StudentName + " " + interns[0].Student.StudentSurname;
+            }        
+            ViewBag.studentName = studentFullName;
             return View(interns);
         }
 

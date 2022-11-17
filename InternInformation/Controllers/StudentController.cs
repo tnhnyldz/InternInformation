@@ -146,7 +146,7 @@ namespace InternInformation.Controllers
             ViewBag.isim = studentProfile[0].StudentName;
             ViewBag.soyisim = studentProfile[0].StudentSurname;
             ViewBag.ID = studentProfile[0].StudentID;
-            List<SelectListItem> InternTypes = (from x in c.InternNames.ToList()
+            List<SelectListItem> InternTypes = (from x in c.InternNames.Where(x=>x.InternStatus).ToList()
                                                 select new SelectListItem
                                                 {
                                                     Text = x.InternNamee,
