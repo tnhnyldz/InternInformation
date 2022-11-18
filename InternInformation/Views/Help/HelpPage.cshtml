@@ -81,17 +81,18 @@
             @foreach (var item in Model)
             {
                 <div class="col">
-                    <h2 class="mb-4">@item.HelpTitle</h2>
+                    <h1 class="mb-5" >@item.HelpTitle</h1>
 
-                    <p>
+                    <p style="font-size:30px">
                         @item.HelpContent1
                     </p>
-
+                   
 
                     @* staj akıs *@<a href="@item.HelpTitle2" target="_blank" class="btn btn-success m-1" download>Staj Akış Diyagramı</a>
                     @* staj basvurukabul *@    <a href="@item.HelpContent2" target="_blank" class="btn btn-success" download>Staj Başvuru Formu</a>
                     @* staj degerlendırme *@   <a href="@item.HelpContent3" target="_blank" class="btn btn-success" download>Staj Değerlendirme Formu</a>
                     @* staj raporu *@  <a href="@item.HelpLogo" target="_blank" class="btn btn-success" download>Staj Raporu</a>
+
                 </div>
             }
 

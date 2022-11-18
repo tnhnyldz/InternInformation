@@ -245,7 +245,40 @@ namespace InternInformation.Controllers
         {
             return View();
         }
-
+        [HttpGet]
+        public ActionResult InternUpdateStudentSide(int id)
+        {
+            Context c = new Context();
+            List<SelectListItem> InternTypes = (from x in c.InternNames.ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = x.InternNamee,
+                                                    Value = x.InternNameID.ToString()
+                                                }).ToList();
+            ViewBag.InternTypes = InternTypes;
+            List<SelectListItem> InternStatus = (from x in c.InternStatuss.ToList()
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = x.InternStatusName,
+                                                     Value = x.InternStatusID.ToString()
+                                                 }).ToList();
+            ViewBag.InternStatus = InternStatus;
+            List<SelectListItem> Students = (from x in c.Students.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.StudentName + " " + x.StudentSurname,
+                                                 Value = x.StudentID.ToString()
+                                             }).ToList();
+            ViewBag.Students = Students;
+            var student = ım.Findintern(id);
+            return View(student);
+        }
+        [HttpPost]
+        public ActionResult InternUpdateStudentSide(Intern p)
+        {
+            ım.UpdateIntern(p);
+            return RedirectToAction("StudentPage");
+        }
 
     }
 }

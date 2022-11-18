@@ -1,0 +1,55 @@
+﻿@model EntityLayer.Concrete.Intern
+
+@{
+    ViewBag.Title = "InternUpdateStudentSide";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+@using (Html.BeginForm("InternUpdateStudentSide", "Student", FormMethod.Post))
+{
+    <br />
+    <div class="container-fluid col-8">
+
+        <h2 class="label">Staj Güncelleme Sayfası</h2>
+
+        <form class="form-group" method="post">
+            @Html.HiddenFor(x => x.InternID)
+            <br />
+            @*@Html.Label("Öğrenci Adı")
+                @Html.TextBoxFor(x => x.Student.StudentName, new { @class = "form-control" })
+                <br />
+                @Html.Label("Öğrenci Soyadı")
+                @Html.TextBoxFor(x => x.Student.StudentSurname, new { @class = "form-control" })
+                <br />*@
+            @Html.Label("Firma ismi")
+            @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control" })
+            <br />
+            @Html.Label("Firma sorumlusu ismi")
+            @Html.TextBoxFor(x => x.CompanyResponsible, new { @class = "form-control" })
+            <br />
+            @Html.Label("Firma sorumlusu numarası")
+            @Html.TextBoxFor(x => x.CompanyResponsibleNumber, new { @class = "form-control" })
+            <br />
+            @Html.Label("Başlangıç Tarihi")
+            @Html.TextBoxFor(x => x.StartDate, "{0:dd-MM-yyyy}", new { @class = "form-control" })
+            <br />
+            @Html.Label("Bitiş Tarihi")
+            @Html.TextBoxFor(x => x.FinishDate, "{0:dd-MM-yyyy}", new { @class = "form-control" })
+            <br />
+            @Html.Label("Staj Belgesi")
+            <input type="file" name="StajBelgesi" />
+            <br />
+            @Html.Label("Staj Defteri")
+            <input type="file" name="StajDefteri" />
+            <br />
+            @Html.Label("Staj Tipi")
+            @Html.DropDownListFor(x => x.InternNameID, (List<SelectListItem>)ViewBag.InternTypes, new { @class = "form-control" })
+            <br />
+            @Html.Label("Staj İlerleme Durumu")
+            @Html.DropDownListFor(x => x.InternStatusID, (List<SelectListItem>)ViewBag.InternStatus, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-warning">Güncelle</button>
+        </form>
+    </div>
+}
+

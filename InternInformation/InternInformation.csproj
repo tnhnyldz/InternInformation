@@ -2422,6 +2422,7 @@
     <Content Include="Views\Intern\EksikBelgeList.cshtml" />
     <Content Include="Views\Intern\GetirDegerlendirme.cshtml" />
     <Content Include="Views\Intern\UnCompleted.cshtml" />
+    <Content Include="Views\Student\InternUpdateStudentSide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
